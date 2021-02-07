@@ -1,0 +1,123 @@
+/*
+* Assignment <2>
+* Description: <The program needs to allow the user to input 3 scores, and use 
+those 3 scores to calculate the average score and GPA from it>
+* Name: <Amani Maxwell>
+* ID: <915928746>
+* Class: CSC 210-01>
+* Semester: <Fall 2019>
+ */
+
+import java.util.Scanner;
+
+public class Assignment2 {
+
+    public static void main(String[] args) {
+
+        // Here the program allows input from the user to enter 3 test scores
+        Scanner input = new Scanner(System.in);
+        System.out.println("Please enter your 3 exam scores: ");
+        double exam1 = (int) input.nextDouble();
+        double exam2 = (int) input.nextDouble();
+        double exam3 = (int) input.nextDouble();
+
+        /* Here we are telling the program how to calculate the average of the
+        3 scores */
+        double avg = ((exam1 + exam2 + exam3) / 3);
+        
+        /* We display to the user their scores they input, their avgerage
+        score, and display the prompt of what their final grade is */
+        System.out.println("Your three exam scores were: " + (int) exam1 + ","
+                + (int) exam2 + "," + (int) exam3);
+        System.out.println("Your average score was: " + (int) avg);
+        System.out.print("Your final grade is a: ");
+
+        // We declare the vairable for grade
+        String grade = " ";
+
+        /* The first if statement is ued to display a fail if one of the three
+        test scores are below a 30*/
+        if (exam1 < 30.0 || exam2 < 30.0 || exam3 < 30.0) {
+            grade = "F";
+            System.out.println(grade);
+
+
+            /* If the scores input are all above 30 the program continues to 
+       find a grade based on the average of the three scores, and it also displays
+            the grade now with the previous final grade prompt*/
+        } else if (avg >= 97.0) {
+            grade = "A+";
+            System.out.println(grade);
+        } else if (avg >= 93.0) {
+            grade = "A";
+            System.out.println(grade);
+        } else if (avg >= 90.0) {
+            grade = "A-";
+            System.out.println(grade);
+        } else if (avg >= 87.0) {
+            grade = "B+";
+            System.out.println(grade);
+        } else if (avg >= 83.0) {
+            grade = "B";
+            System.out.println(grade);
+        } else if (avg >= 80.0) {
+            grade = "B-";
+            System.out.println(grade);
+        } else if (avg >= 77.0) {
+            grade = "C+";
+            System.out.println(grade);
+        } else if (avg >= 70.0) {
+            grade = "C";
+            System.out.println(grade);
+        } else if (avg >= 67.0) {
+            grade = "D+";
+            System.out.println(grade);
+        } else if (avg >= 60.0) {
+            grade = "D";
+            System.out.println(grade);
+        } else {
+            grade = "F";
+            System.out.println(grade);
+        }
+
+        /* Here a switch is used that calls on the grade variable to find out
+        what the GPA is equal to, and displays the information to the user*/
+        System.out.print("Your GPA is: ");
+
+        switch (grade) {
+            case "A+":
+                System.out.println("4.0");
+                break;
+            case "A":
+                System.out.println("4.0");
+                break;
+            case "A-":
+                System.out.println("3.7");
+                break;
+            case "B+":
+                System.out.println("3.3");
+                break;
+            case "B":
+                System.out.println("3.0");
+                break;
+            case "B-":
+                System.out.println("2.7");
+                break;
+            case "C+":
+                System.out.println("2.3");
+                break;
+            case "C":
+                System.out.println("2.0");
+                break;
+            case "D+":
+                System.out.println("1.7");
+                break;
+            case "D":
+                System.out.println("1.0");
+                break;
+            case "F":
+                System.out.println("0.0");
+        }
+
+    }
+}

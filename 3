@@ -1,0 +1,142 @@
+/*
+*  Assignment [ASSIGNMENT 3]
+*  Description: [The program creates a virtual dog and asks the user to
+name it. The name is taken and the user is asked whether they would like 
+to walk the dog, feed the dog, or clean the dog. Depending on the choice
+the three levels (happiness, energy, and hygiene) rise or fall. The program
+ends when the user exits the program the 4th option on the main menu.
+When the program ends the user is shown the stats of how well they took 
+care of their virtual pet based on its happiness level.]
+*  Name: [AMANI MAXWELL]
+*  ID: [915928746]
+*  Class: CSC 210-01
+*  Semester: FALL 2019
+*/
+import java.util.Scanner;
+
+public class Assignment3 {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+       //DECLARE THE VARIABLES WE WILL USE
+        String puppyName = "";
+        int activity = 0;
+        int happyPup = 60;
+        int energyPup = 60;
+        int hygienePup = 60;
+        
+        
+        // ASK THE USER FOR WHAT THEY WOULD LIKE TO NAME THE DOG
+        System.out.println("What is your puppy's name: ");
+        puppyName = input.nextLine();
+
+        /*HAVE THE PROGRAM REPEATIVELY OUTPUT THE MENU OF CHOICES
+        UNTIL ENDING THE PROGRAM BY INPUTING THE NUMBER 4
+        */
+        while (activity != 4) {
+            System.out.println("\n" + "Which action would you like to take with "
+                    + puppyName + " ?");
+            System.out.println("1. Walk the virtual dog\n"
+                    + "2. Feed the virtual dog \n" + "3. Clean the virtual dog \n"
+                    + "4. Exit the program \n");
+            System.out.println("Please enter your number selction: ");
+            activity = input.nextInt();
+            
+        /*HAVE AN IF STATEMENT SELECTION THAT MAKES THE SCORE
+        CONSTANTLY 100 IF ONE OF THE LEVELS REACHES ABOVE 100*/
+            int temp = 100;
+            if(happyPup>100)
+                happyPup = temp;
+            if(energyPup>100)
+                energyPup = temp;
+            if(hygienePup>100)
+                hygienePup = temp;
+         
+         /* HAVE A SWITCH STATEMENT FOR NUMBER SELECTIONS ON MAIN MENU.
+            BASED ON THE NUMBER SELECTION CHANGE THE SCORES OF THE LEVEL
+            AFFECTED. (I added to show the levels of the overall score 
+            for each level so the user would know how their dog was 
+            currently feeling)
+         */
+
+            switch (activity) {
+                
+                case 1: // Walk the dog
+                    if (energyPup > 30) {
+                        happyPup+= 5;
+                        energyPup-= 20;
+                        hygienePup-= 5;
+                        System.out.println("\n" + "Overall Happiness: " 
+                                + happyPup);
+                        System.out.println("Overall Energy: " + energyPup);
+                        System.out.println("Overall Hygiene: " + hygienePup);
+                    } else {
+                        happyPup-= 5;
+                        energyPup-= 20;
+                        hygienePup-= 5;
+                        System.out.println("\n" + "Overall Happiness: " 
+                                + happyPup);
+                        System.out.println("Overall Energy: " + energyPup);
+                        System.out.println("Overall Hygiene: " + hygienePup);
+                    }
+                    break;
+                case 2: // Feed the dog
+                    if (energyPup < 95) {
+                        happyPup+= 5;
+                        energyPup+= 10;
+                       System.out.println("\n" + "Overall Happiness: " 
+                                + happyPup);
+                        System.out.println("Overall Energy: " + energyPup);
+                        System.out.println("Overall Hygiene: " + hygienePup);
+
+                    } else {
+                        System.out.println("Your pup is full");
+                        System.out.println("\n" + "Overall Happiness: " 
+                                + happyPup);
+                        System.out.println("Overall Energy: " + energyPup);
+                        System.out.println("Overall Hygiene: " + hygienePup);
+                    }
+                    break;
+                case 3: //Clean the dog
+                    if (energyPup < 80) {
+                        happyPup+= 5;
+                        hygienePup+= 30;
+                        System.out.println("\n" + "Overall Happiness: " 
+                                + happyPup);
+                        System.out.println("Overall Energy: " + energyPup);
+                        System.out.println("Overall Hygiene: " + hygienePup);
+                    } else {
+                       System.out.println("\n" + "Overall Happiness: " 
+                                + happyPup);
+                        System.out.println("Overall Energy: " + energyPup);
+                        System.out.println("Overall Hygiene: " + hygienePup);
+                    }
+                    break;
+                 
+                    /*HAVE CASE 4 END THE PROGRAM AND DISPLAY DOG'S
+                    NAME, SCORES FOR EACH LEVEL (happiness, energy,
+                    and hygiene), AND IF THEY SHOULD GET A REAL DOG */
+                    
+                case 4:// End Program
+                    System.out.println("\n" +"Your puppys name was " + puppyName);
+                    System.out.println("Overall Happiness: " + happyPup);
+                    System.out.println("Overall Energy: " + energyPup);
+                    System.out.println("Overall Hygiene: " + hygienePup);
+                    if (happyPup > 75) {
+                        System.out.println("Your doggo was super happy!"+
+                                "Me and " + puppyName 
+                                +" think your ready for a REAL dog");
+                    } else if (happyPup > 60) {
+                        System.out.println("Your doggo has some sugeestions for"
+                                + " it's future treatment."+ " I wouldnt"
+                                + " get a pup just yet.");
+                    } else {
+                        System.out.println("Maybe...your just not a dog person.");
+                    }
+
+            }
+        }
+
+    }
+}

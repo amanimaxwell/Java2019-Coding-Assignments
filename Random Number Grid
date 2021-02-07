@@ -1,0 +1,62 @@
+/*
+* Assignment <6>
+* Description: <>
+* Name: <Amani Maxwell>
+* ID: <915928746>
+* Class: CSC 210-01>
+* Semester: <Fall 2019>
+ */
+import java.util.Scanner;
+
+public class RandomNumberGrid {
+    
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("How many rows do you want your grid to have?");
+        System.out.println("(Enter a number 1-9)");
+        int value = input.nextInt();
+       
+        
+        
+        /* while loop test input between range and if not repeatedly prompts
+        for correct input*/
+
+        while (value < 1 || value > 9) {
+            System.out.println("ERROR! \nYour value is not between 1-9");
+            System.out.println("How many rows do you want your grid to have?");
+            value = input.nextInt();  
+        }
+        
+        System.out.println("How many columns do you want your grid to have?");
+        System.out.println("(Enter a number 1-9)");
+        int value2 = input.nextInt();
+       
+        
+        
+        /* while loop test input between range and if not repeatedly prompts
+        for correct input*/
+
+        while (value2 < 1 || value2 > 9) {
+            System.out.println("ERROR! \nYour value is not between 1-9");
+            System.out.println("How many rows do you want your grid to have?");
+            value2 = input.nextInt();
+    }
+    
+      // double array created to generate number of rows and columns
+   int[][] array = new int[value][value2];
+        for (int i = 0; i < array.length; i++){
+            for (int j = 0; j < array.length; j++){
+              // set array at each instance to a random number between 1 and 9
+               array [i][j] = (int) (Math.random() * 10); 
+            }
+        }
+        
+        // for loop used to print values of  all array instances in a grid
+        for (int i = 0; i < array.length; i++) {
+            for (int j = 0; j < array[i].length; j++) {
+                System.out.print(array [i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+}

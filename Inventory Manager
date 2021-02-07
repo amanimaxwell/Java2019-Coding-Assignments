@@ -1,0 +1,171 @@
+/*
+* Assignment <5>
+* Description: <The purpose of this program is to create an
+inventory manager. The program will take in user input for 
+5 pre-determined items for how many/much the items are. Once 
+that is complete the main menu of the program will be presented.
+The user will choose between 5 choices on the main menu, the last
+opiton being to exit the program.>
+* Name: <Amani Maxwell>
+* ID: <915928746>
+* Class: CSC 210-01>
+* Semester: <Fall 2019>
+ */
+
+import java.util.Scanner;
+
+public class InventoryManager {
+
+    public static void main(String[] args) {
+
+        //final store name initialized
+        final String STORE_NAME = "Bob's Casino";
+
+        Scanner input = new Scanner(System.in);
+
+        //Welcomes user to program
+        System.out.println("Welcome to INVENTORY MANAGER for: " + STORE_NAME);
+
+        //String array created for the 5 pre-determined items
+        String[] items = new String[5];
+        items[0] = "Onion";
+        items[1] = "Broccoli";
+        items[2] = "Carrot";
+        items[3] = "Zucchini";
+        items[4] = "Cucumber";
+
+        //Int array quantities created holding 5 values
+        int[] quantities = new int[5];
+        for (int r = 0; r < 5; r++) {
+            System.out.println("How many " + items[r] + " do you have?");
+             // user inputs 5 values for array quantities
+            quantities[r] = input.nextInt();
+
+             // if statement used to test for invalid input
+            if (quantities[r] >= 0) {
+
+            } else {
+                 // if input invalid user prompted repeatedly until correct
+                do {
+                    System.out.println("Invalid Input: Your quantity must be "
+                            + " greater or equal to 0.");
+
+                    quantities[r] = input.nextInt();
+
+                } while (quantities[r] < 0);
+
+            }
+
+        }
+        //Double array quantities created holding 5 values
+        double[] prices = new double[5];
+        int e;
+
+        for (e = 0; e < prices.length; e++) {
+            System.out.println("How much is the " + items[e] + " ?");
+
+            prices[e] = input.nextDouble();
+            
+             // if statement used to test for invalid input
+            if (prices[e] >= 0) {
+
+            } else {
+             // if input invalid user prompted repeatedly until correct
+                do {
+                    System.out.println("Invalid Input: Your price "
+                            + "must be greater or equal to 0.");
+
+                    prices[e] = input.nextDouble();
+
+                } while (prices[e] < 0);
+
+            }
+
+        }
+         // int choice initialized
+        int choice = 0;
+
+         // while loop created to repeat main menu for choice value not equal to 5
+        while (choice != 5) {
+            System.out.println(" \n     MAIN MENU:");
+            System.out.println("\n  1.Print inventory \n  2.Check for low inventory \n"
+                    + "  3.Highest and lowest inventory \n  4.Total inventory \n "
+                    + " 5.Exit");
+            choice = input.nextInt();
+
+            switch (choice) {
+
+                case 1:// Print inventory
+                    int indexValue;
+                    for (indexValue = 0; indexValue < 5; indexValue++) {
+                        System.out.println("\n Item: " + items[indexValue]
+                                + "\n Quantity: " + quantities[indexValue]
+                                + "\n Price: $" + prices[indexValue]
+                                + "\n Total Value: $"
+                                + (quantities[indexValue] * prices[indexValue]));
+                    }
+                    break;
+
+                case 2:// Check for low inventory
+                    boolean b = false;
+                    for (int x = 0; x < 5; x++){
+                        if (quantities[x] < 5) {
+                            b = true;
+                            System.out.println("\n Item: " + items[x]
+                                    + "\n Quantity: " + quantities[x]
+                                    + "\n Price: $" + prices[x]
+                                    + "\n Total Value: $"
+                                    + (quantities[x] * prices[x]));
+                        } else if(b == false) {
+                         System.out.println("Your stock is fine!");
+                         break;
+                        }
+                    }
+                    
+                    break;
+
+                case 3:// Highest and lowest inventory value
+                    double max = quantities[0] * prices[0];
+                    double min = quantities[0] * prices[0];
+                    for (int x = 1; x < 5; x++) {
+                        if (quantities[x] * prices[x] > max) {
+                            max = quantities[x] * prices[x];
+                            System.out.println("\n Item: " + items[x]
+                                    + "\n Quantity: " + quantities[x]
+                                    + "\n Price: $" + prices[x]
+                                    + "\n Total Value: $"
+                                    + (quantities[x] * prices[x]));
+                        
+                        } if (quantities[x] * prices[x] < min) {
+                            min = quantities[x] * prices[x];
+                            System.out.println("\n Item: " + items[x]
+                                    + "\n Quantity: " + quantities[x]
+                                    + "\n Price: $" + prices[x]
+                                    + "\n Total Value: $"
+                                    + (quantities[x] * prices[x]));
+                            } 
+                    }
+                    break;
+
+                case 4:// Total inventory value
+
+                    double sumValue = 0;
+
+                    for (int y = 0; y < 5; y++) {
+                        double totalValue = (quantities[y] * prices[y]);
+                        sumValue += totalValue;
+                    }
+                    System.out.println("The total inventory value is: "
+                            + sumValue);
+                    break;
+
+                case 5: // Exit
+                    System.out.println("Thankyou for using Inventory Manager."
+                            + "Goodbye!");
+
+            }
+
+        }
+
+    }
+}

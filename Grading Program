@@ -1,0 +1,65 @@
+
+public class Assignment4 {
+
+    public static void main(String[] args) {
+        displayCourseInfo(20, 40, 70);
+        displayCourseInfo(90, 70, 60);
+    }
+
+    public static void displayCourseInfo(double score1, double score2, double score3) {
+        /* We display to the user their scores they input, their avgerage
+        score, and display the prompt of what their final grade is */
+        System.out.println("Your three exam scores were: "
+                + (int) score1 + ","
+                + (int) score2 + "," + (int) score3);
+        System.out.println("Your average score was: "
+                + (int) (getOverallScore(score1, score2, score3)));
+        System.out.println("Your final grade is a: "
+                + (getLetterGrade(score1 + score2 + score3 / 3)));
+
+    }
+
+    public static double getOverallScore(double score1, double score2, double score3) {
+        /* Here we are telling the program how to calculate the average of the
+        3 scores */
+        double avg = score1 + score2 + score3 / 3;
+        return avg;
+    }
+
+    public static String getLetterGrade(double overallScore) {
+        String grade = " ";
+        /* The first if statement is ued to display a fail if one of the three
+        test scores are below a 30*/
+        if (overallScore < 30.0) {
+            grade = "F";
+            return grade;
+
+
+            /* If the scores input are all above 30 the program continues to 
+       find a grade based on the average of the three scores, and it also displays
+            the grade now with the previous final grade prompt*/
+        } else if (overallScore >= 97.0) {
+            grade += "A+";
+        } else if (overallScore >= 93.0) {
+            grade += "A";
+        } else if (overallScore >= 90.0) {
+            grade = "A-";
+        } else if (overallScore >= 87.0) {
+            grade += "B+";
+            System.out.println(grade);
+        } else if (overallScore >= 83.0) {
+            grade += "B";
+        } else if (overallScore >= 80.0) {
+            grade += "B-";
+        } else if (overallScore >= 77.0) {
+            grade = "C+";
+        } else if (overallScore >= 70.0) {
+            grade = "C";
+        } else if (overallScore >= 67.0) {
+            grade = "D+";
+        } else if (overallScore >= 60.0) {
+            grade = "D";
+        }
+        return grade;
+    }
+}
